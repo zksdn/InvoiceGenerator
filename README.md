@@ -7,4 +7,4 @@ Invoice Generator contains function in javascript to view the real-time values a
 
 This project use <a href="http://www.html2pdf.fr/en">HTML2PDF</a> library to convert HTML to PDF using PHP langague.<br/>
 This projet use a free template (<a href="http://www.binarycart.com">binarycart.com</a>) based on Bootstrap framework.<br/>
-This project is licensed under LGPL.<br/>
+This project is licensed under the GNU GPL.<br/>
