@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+
+<!-- 
+  Invoice Generator - 2015
+  Free and Open Source
+  Developed by Mohamed Zakaria SAIDANE
+  https://github.com/medzaksdn/InvoiceGenerator
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+	<title>Invoice Generator</title>
+	
+	<!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<!--DatePicker-->
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/datepicker3.css">
+	
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Invoice Generator</a> 
+            </div>
+            <div style="color: white; padding: 15px 50px 5px 50px; float: right;font-size: 16px;"> Invoice Generator By <a href="https://github.com/medzaksdn">Mohamed Zakaria Saidane</a></div>
+        </nav>   
+           <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				    <li class="text-center">
+				        <img src="assets/img/invoicegenerator.png" class="user-image img-responsive"/>
+					</li>
+                    <li>
+                        <a class="active-menu"  href="invoice.html"><i class="fa fa-edit fa-3x"></i> Invoice Generator </a>
+                    </li>				
+                    <li>
+                        <a href="about.html"><i class="fa fa-thumbs-up fa-3x"></i> About</a>
+                    </li>	
+                </ul>
+            </div>
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>Invoice Generator</h2>   
+                        <h5>Create & generate your invoice, and download as PDF !</h5>                       
+                    </div>
+                </div>
+				
+                <hr />
+              <div class="row">
+			    <form name="invoiceform" id="invoiceform" method="post" action="invoice.php" enctype="multipart/form-data" >
+                 <div class="col-md-12">
+                    <!-- Setting -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            GENERAL SETTINGS
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+							
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Tax %</label>
+                                        <select class="form-control" name="tax" id="tax">
+                                            <option value="on" >On</option>
+                                            <option value="off" >Off</option>
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Discount %</label>
+										<select class="form-control" name="discount" id="discount">
+											<option value="on" >On</option>
+											<option value="off" >Off</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									    <label>Currency</label>
+										<select class="form-control" name="currency" id="currency" >
+											<option value="$" >Dollar $</option>
+											<option value="€" >Euro €</option>
+											<option value="¥" >Yuan (¥)</option>
+											<option value="£" >Pound £</option>
+								    	</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									    <label>Logo</label>
+										<input class="form-control" type="file" name="fileToUpload" id="fileToUpload">
+									</div>
+								</div>
+								
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End Settings -->
+					 
+                     <!-- Informations -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Informations
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                
+								<div class="col-md-4">
+									<div class="form-group input-group">
+										<span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+										<input name="invoiceName" type="text" class="form-control" value="Invoice" required >
+									</div>
+                                </div>
+								<div class="col-md-4">
+									<div class="form-group input-group">
+										<span class="input-group-addon"><i class="fa fa-list"></i></span>
+										<input name="invoiceID" type="text" class="form-control" placeholder="Invoice Number" required >
+									</div>
+                                </div>
+								<div class="col-md-4">
+									<div class="form-group input-group date invoiceDate">
+										<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+										<input name="invoiceDate" type="text" class="form-control" required >
+									</div>
+                                </div>
+								
+								<div class="col-md-6">
+								    <h3>BILL FROM</h3>
+									
+									<div class="form-group">
+										<label>Business Name *</label>
+										<input class="form-control" name="businessName1" type="text" required />
+									</div>
+									<div class="form-group">
+										<label>Adress Line</label>
+										<input class="form-control" name="adressline1" type="text"/>
+									</div>
+									<div class="form-group">
+										<label>Phone</label>
+										<input class="form-control" name="phone1" type="text"/>
+									</div>
+									<div class="form-group">
+										<label>E-mail</label>
+										<input class="form-control" name="email1" type="text"/>
+									</div>									
+								</div>
+								
+								<div class="col-md-6">
+								    <h3>BILL TO</h3>
+									
+									<div class="form-group">
+										<label>Business Name *</label>
+										<input class="form-control" name="businessName2" type="text" required />
+									</div>
+									<div class="form-group">
+										<label>Adress Line</label>
+										<input class="form-control" name="adressline2" type="text"/>
+									</div>
+									<div class="form-group">
+										<label>Phone</label>
+										<input class="form-control" name="phone2" type="text"/>
+									</div>
+									<div class="form-group">
+										<label>E-mail</label>
+										<input class="form-control" name="email2" type="text"/>
+									</div>									
+								</div>
+								
+                            </div>
+                        </div>
+                    </div>
+					<!-- End Informations -->
+					
+					<!-- Items -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Items
+                        </div>
+                        <div class="panel-body" id="items">
+						  <input type="hidden" name="nbritem" id="nbritem" value="1">
+						  
+							<div class="row">
+							    <div class="col-md-4"></div>
+								<div class="col-md-2">
+							     <div class="form-group">
+								   <br />
+								       <button type="button" class="btn btn-success col-md-6" title="Add more" id="additem">
+									     <span class="glyphicon glyphicon-plus"></span>
+								       </button>
+							      </div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+									    <br />
+										<button type="button" class="btn btn-danger col-md-6" title="Remove" id="removeitem">
+											<span class="glyphicon glyphicon-trash"></span>
+									    </button>
+									</div>
+								</div>
+								<div class="col-md-4"></div>
+								
+                            </div>								
+							
+							
+                            <div class="row" id="item1">
+                              <br/>
+							  <div class="col-md-12">
+							  
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Item*</label>
+										<input class="form-control" name="item1" type="text"  placeholder="Description of service or product" required >
+									</div>
+                                </div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<label>QUANTITY*</label>
+										<input class="form-control" name="quantity1" type="text" value="1" id="quantity1" onkeypress="return isNumber(event)" onkeyup="calculSubTotal(1), calculTotal()" required />
+									</div>
+                                </div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>PRICE*</label>
+									    <input class="form-control" name="price1" type="text" id="price1" onkeypress="return isNumber(event)" onkeyup="calculSubTotal(1), calculTotal()" required />
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Total</label>
+										<br />
+										<span><strong><span class="currency">$</span><span id="subtot1"> 0</span></strong></span>
+										<input type="hidden" name="subtothidden1" id="subtothidden1" value="0">
+									</div>
+								</div>
+								
+						       </div>
+								
+                            </div>
+
+                        </div>
+                    </div>
+					<!-- End Items -->
+
+                    <!-- Total -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Total
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+							    <div class="col-md-12">	
+                                  
+								  <div class="col-md-8"></div>
+								
+							      <div class="col-md-4">
+								
+									<div class="form-group">
+										<label>Subtotal : <span class="currency">$</span><span id="subtotal"> 0</span></label>
+										<input type="hidden" name="subtotalhidden" id="subtotalhidden" value="0">
+									</div>
+									<div class="form-group" id="discountvalue">
+										<label>Discount %</label>
+										<input class="form-control" name="discountvalue" type="text" value="0" id="discountinput" onkeypress="return isNumber(event)" onkeyup="calculTotal()" />
+									</div>
+									<div class="form-group" id="taxvalue">
+										<label>Tax %</label>
+										<input class="form-control" name="taxvalue" type="text" value="0" id="taxinput" onkeypress="return isNumber(event)" onkeyup="calculTotal()" />
+									</div>
+									<div class="form-group">
+										<h3>Total : <span class="currency">$</span><span id="total"> 0</span></h3>
+										<input type="hidden" name="totalhidden" id="totalhidden" value="0">
+									</div>
+								   
+								   </div>
+								   
+								</div>
+								
+								<div class="col-md-12">
+									
+									<div class="col-md-6">
+								      <div class="form-group">
+										  <label>Notes</label>
+										  <textarea name="notes" class="form-control" rows="5" placeholder="Notes - any relevant information not already covered" ></textarea>
+									  </div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Terms</label>
+											<textarea name="terms" class="form-control" rows="5" placeholder="Terms and conditions - late fees, payment methods, delivery schedule"></textarea>
+										</div>
+									</div>
+									
+								</div>
+								
+								<div class="col-md-12">
+									<div class="col-md-3"></div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-danger col-md-6" title="Generate and Download Invoice (PDF)" name="submit">
+											Generate and Download Invoice (PDF)
+										</button>
+									</div>
+									<div class="col-md-3"></div>
+								</div>
+								
+                            </div>
+                        </div>
+                    </div>
+					<!-- End Total -->
+                 </div>
+				</form>
+              </div>
+			  
+            </div>
+			
+			<!-- /. 2015  Free and Open Source.  -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-8">Invoice Generator - 2015 -  Free and Open Source.</div>
+					<div class="col-md-4">Developed by <a href="https://github.com/medzaksdn">Mohamed Zakaria Saidane</a></div>
+					<div class="col-md-4"><a href="https://github.com/medzaksdn/InvoiceGenerator"> https://github.com/medzaksdn/InvoiceGenerator</a></div>
+				</div>
+			</div>
+			<!-- /. 2015  Free and Open Source.  -->
+			
+        </div>
+			
+    </div>
+
+    
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    
+	<!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+	
+     <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+	<!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+	
+	<!--DatePicker-->
+	<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+
+	<script language="javascript">
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 46 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+	
+</body>
+
+</html>
